@@ -1,5 +1,15 @@
 package com.appium.appiumUtils;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Random;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -13,6 +23,8 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 
 public class AppiumUtilsActions extends DriverManagerCapabilities {
+	
+	 public Connection connection;
 
 
 	public void LongpressAction(WebElement ele) {
@@ -44,21 +56,6 @@ public class AppiumUtilsActions extends DriverManagerCapabilities {
     }
 
 
-
-
-
-
-
-    /**
-
-     * @author Pavan.Joshi
-
-     * This method used for Scroll till particular text
-
-     * @param text
-
-     */
-
     public void ScrollTOtextandClick(String text)
     {
     WebElement scrolltext = driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"));"));
@@ -81,48 +78,9 @@ public class AppiumUtilsActions extends DriverManagerCapabilities {
     		    "direction","down",
     		    "percent",0.75
     		));
-
-
-
-    	//boolean canScrollMore;
-
-
-
-//    	do {
-//    	canScrollMore= (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture", ImmutableMap.of(
-//    		    "left", 100, "top", 100, "width", 200, "height", 200,
-//    		    "direction", "up",
-//    		    "percent", 3.0
-//    		));
-//    	}
-//    	while(canScrollMore);
-//
-//    	Thread.sleep(3000);
-
-
-
-
-
-
-
-
-//    	TouchAction touchAction = new TouchAction(driver);
-//        touchAction.longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(targetElement)).withDuration(Duration.ofMillis(1000))).release().perform();
-//
-//        // Simulate scrolling (page up and down)
-//        int startX = driver.manage().window().getSize().getWidth() / 2;
-//        int startY = driver.manage().window().getSize().getHeight() / 2;
-//        int scrollAmount = 200; // Adjust this value as needed
-//
-//        // Scroll down
-//       // touchAction.press(ElementOption.point(startX, startY)).moveTo(ElementOption.point(startX, startY - scrollAmount)).release().perform();
-//
-//        // Wait for a moment (you can add an explicit wait here if needed)
-//
-//        // Scroll up
-//        touchAction.press(ElementOption.point(startX, startY - scrollAmount)).moveTo(ElementOption.point(startX, startY)).release().perform();
     }
-
+    
+    
     public void mousescroll(WebElement elementToScroll) {
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.ARROW_LEFT).perform();
@@ -130,15 +88,52 @@ public class AppiumUtilsActions extends DriverManagerCapabilities {
         }
 
     public void handlealertpopup() {
-
-
-  	Alert alert = driver.switchTo().alert();
+     Alert alert = driver.switchTo().alert();
     	alert.accept();
     }
+     
+    
+    
+    
+    public String getrandommobilenumber() {
+    	        
+    	 Random random = new Random();
+	        int firstDigit = 8 + random.nextInt(2);
+	        StringBuilder mobileNumber = new StringBuilder(String.valueOf(firstDigit));
+	        for (int i = 0; i < 9; i++) {
+	            mobileNumber.append(random.nextInt(10));
+	        }
+	        return mobileNumber.toString();
+   	
+    	    }
+     
+  
+     
+     
+         public String executequery(String query1, String columnName) throws SQLException, IOException {
+        	 
+        	 connection = DriverManager.getConnection(readprop("DatabaseInstance"),readprop("DatbaseUsername"),readprop("DatabasePassword"));
+        	 
+        	    Statement statement = connection.createStatement();
+        	    ResultSet resultSet = statement.executeQuery(query1);
+        	    if (resultSet.next()) {
+        	        String columnValue = resultSet.getString(columnName);
+        	        return columnValue;
+        	    } else {
+        	        
+        	        return null; 
+        	    }
+        	}
+
+         
+        
+         
+     }
+     
+     
 
 
-
-	}
+	
 
 
 

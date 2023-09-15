@@ -15,11 +15,11 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class DriverManagerCapabilities {
 
-//	public static AndroidDriver driver=getWebDriver();
+//  public AndroidDriver driver=getWebDriver();
 //    private static ThreadLocal<AndroidDriver>threadDriver=new ThreadLocal<AndroidDriver>();
-	public  static AndroidDriver driver;
+	public static AndroidDriver driver;
 	@SuppressWarnings("deprecation")
-	public static void devicemanager() throws IOException
+	public void devicemanager() throws IOException
 	{
 		if(readprop("platformname").equalsIgnoreCase("android"))
 		{
@@ -66,7 +66,7 @@ public class DriverManagerCapabilities {
 	}
 
 
-//	 public static AndroidDriver getWebDriver()
+//	 public  static AndroidDriver getWebDriver()
 //	    {
 //	        return threadDriver.get();
 //	    }

@@ -24,23 +24,22 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions
         (
-           features = "src/test/java/com/appium/feature",
+           features = "@target/Failed_Scenarios.txt",
            glue = {"com.appium.stepdefinations"},
-        //tags="@postivefreshlead",
            monochrome=true,
        plugin= {   "pretty",
 
         "html:target/cucumber.html",
-        
+       
  		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
- 		"rerun:target/Failed_Scenarios.txt"
+ 		
    		}
 
 
 )
 
 
-public class AppiumJunitTestRunner extends DriverManagerCapabilities{
+public class FailedTestScenariosJunitTestRunner extends DriverManagerCapabilities{
 	
 	static DriverManagerCapabilities drivermangercapa= new DriverManagerCapabilities()
 ;

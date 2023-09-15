@@ -14,6 +14,7 @@ public class AppiumConstants {
 
 		   PROJECT_PATH + File.separator + RESOURCES_PATH + File.separator + "app" + File.separator +
 	     "ng_customer_app_2.0.0-universal-releasestaging (1).apk";
+    public static final String AppiumLogFilepath=userHome+File.separator+"appium.log";
 
     public static final int APPIUM_SERVER_PORT = 4723;
     public static final String APPIUM_SERVER_HOST = "127.0.0.1";
