@@ -3,87 +3,53 @@ package com.appium.pageobjectrepo;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-import com.appium.appiumUtils.AppiumUtilsActions;
 import com.appium.appiumUtils.DriverManagerCapabilities;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-public  class LoginPage extends DriverManagerCapabilities {
+public class LoginPage {
 
-	  public AndroidDriver driver;
+	public AndroidDriver driver;
+	@AndroidFindBy(accessibility = "splash-screen-login-button")
+	private WebElement loginbtn;
 
-	  AppiumUtilsActions Ac= new AppiumUtilsActions();
-	  HomePage hompage= new HomePage(driver);
+	@AndroidFindBy(accessibility = "login-screen-employee-id-input")
+	private WebElement employeeidtextfield;
 
-	  @AndroidFindBy(accessibility= "login screen input mobile number")
-	  private WebElement txtFieldmobilenumber;
+	@AndroidFindBy(accessibility = "login-screen-send-otp-button")
+	private WebElement sendotpbtn;
 
-	  @AndroidFindBy(accessibility ="login screen button login with password")
-	  private  WebElement btnpassword;
+	@AndroidFindBy(accessibility = "login-screen-otp-input")
+	private WebElement otpTextFeild;
 
-	  @AndroidFindBy(accessibility = "enter password screen input password")
-	  private WebElement paswwordTextfeild;
+	@AndroidFindBy(accessibility = "login-screen-verify-otp-button")
+	private WebElement verifybutton;
 
-	  @AndroidFindBy(accessibility = "enter password screen button login")
-	  private WebElement btnLogin;
+	public LoginPage(AndroidDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+	}
 
+	public WebElement LoginButton() {
+		return loginbtn;
+	}
 
+	public WebElement EmployeedIDTextFeild() {
+		return employeeidtextfield;
+	}
 
-	  @AndroidFindBy(accessibility="more screen text consumer awareness")
-	  private WebElement textfieldcunsumerawareness;
+	public WebElement SendOTPButton() {
+		return sendotpbtn;
+	}
 
-	  @AndroidFindBy(accessibility = "more screen text logout title")
-	  private WebElement logoutBtn;
+	public WebElement OTPTextFeild() {
+		return otpTextFeild;
+	}
 
-	  @AndroidFindBy(xpath = "//*[@text='Yes']")
-	  private WebElement yesbuton;
+	public WebElement VerifyButton() {
+		return verifybutton;
+	}
 
-       public LoginPage(AndroidDriver driver)
-       {
-		this.driver=driver;
-		PageFactory.initElements(new AppiumFieldDecorator(driver),this);
-
-	   }
-
-	 public WebElement entermobilenumber()
-	 {
-		 return txtFieldmobilenumber;
-
-     }
-
-
-	 public WebElement taponpasswordbutn() {
-		return  btnpassword;
-	 }
-
-	 public WebElement clickyesbutonfrompopup() {
-		return yesbuton;
-	 }
-
-	 public WebElement enterpassword()
-	 {
-		return paswwordTextfeild;
-	 }
-
-	 public WebElement TaponLoginBtn()
-	 {
-		return  btnLogin;
-	 }
-
-
-
-	 public void taponlogoutbutton() {
-		 new HomePage(driver).taponmorebutton().click();
-		 Ac.mousescroll(textfieldcunsumerawareness);
-		 clicklogout();
-		 clickyesbutonfrompopup().click();
-	 }
-
-
-	 public void clicklogout()
-	 {
-		 logoutBtn.click();
-	 }
 }

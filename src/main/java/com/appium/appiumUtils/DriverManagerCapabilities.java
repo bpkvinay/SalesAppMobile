@@ -2,7 +2,9 @@ package com.appium.appiumUtils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
+import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.remote.CapabilityType;
@@ -15,22 +17,22 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class DriverManagerCapabilities {
 
-//	public static AndroidDriver driver=getWebDriver();
+//  public AndroidDriver driver=getWebDriver();
 //    private static ThreadLocal<AndroidDriver>threadDriver=new ThreadLocal<AndroidDriver>();
-	public  static AndroidDriver driver;
+	public static AndroidDriver driver;
 	@SuppressWarnings("deprecation")
-	public static void devicemanager() throws IOException
+	public void devicemanager() throws IOException
 	{
 		if(readprop("platformname").equalsIgnoreCase("android"))
 		{
 	 UiAutomator2Options androi= new UiAutomator2Options();
 	 androi.setCapability(CapabilityType.PLATFORM_NAME, readprop("platformname"));
-	 androi.setCapability(MobileCapabilityType.UDID, readprop("udid"));
-	 androi.setCapability(MobileCapabilityType.DEVICE_NAME, readprop("DeviceName"));
+	//androi.setCapability(MobileCapabilityType.UDID, readprop("udid"));
+	//androi.setCapability(MobileCapabilityType.DEVICE_NAME, readprop("DeviceName"));
 	 driver= new AndroidDriver(new URL(readprop("URL")),androi);
 	 Activity activity = new Activity(readprop("AppPackage"),readprop("AppActivity"));
-		driver.startActivity(activity);
-
+	 driver.startActivity(activity);
+	
 
 		}
 		else if(readprop("platformname").equalsIgnoreCase("ios")) {
@@ -51,10 +53,10 @@ public class DriverManagerCapabilities {
 
 		try {
 
-		Properties prop= new Properties();
+		Properties properties= new Properties();
 		FileInputStream file = new FileInputStream(AppiumConstants.PROPERTYPATH);
-		prop.load(file);
-		return prop.getProperty(key);
+		properties.load(file);
+		return properties.getProperty(key);
 
 	}
 		catch(Exception e){
@@ -66,7 +68,7 @@ public class DriverManagerCapabilities {
 	}
 
 
-//	 public static AndroidDriver getWebDriver()
+//	 public  static AndroidDriver getWebDriver()
 //	    {
 //	        return threadDriver.get();
 //	    }
