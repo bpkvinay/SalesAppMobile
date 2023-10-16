@@ -20,13 +20,13 @@ public class AppiumServiceManager {
 
 	{
 	 Service= new AppiumServiceBuilder().withAppiumJS(new File(AppiumConstants.appiumLibPath))
-			.withIPAddress("127.0.0.1")
-		.usingPort(4723)
+			.withIPAddress(AppiumConstants.APPIUM_SERVER_HOST)
+		.usingPort(AppiumConstants.APPIUM_SERVER_PORT)
 		.withLogFile(new File(AppiumConstants.AppiumLogFilepath))
 				.build();
 	Service.start();
 	
-	//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+	
 	}
 
 	

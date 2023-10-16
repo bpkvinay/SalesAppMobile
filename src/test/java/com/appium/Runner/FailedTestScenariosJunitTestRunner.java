@@ -1,6 +1,5 @@
 package com.appium.Runner;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
@@ -22,49 +21,32 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions
-        (
-           features = "@target/Failed_Scenarios.txt",
-           glue = {"com.appium.stepdefinations"},
-           monochrome=true,
-       plugin= {   "pretty",
+@CucumberOptions(features = "@target/Failed_Scenarios.txt", glue = {
+		"com.appium.stepdefinations" }, 
+         monochrome = true,
+         plugin = { "pretty",
+				"html:target/cucumber.html",
+				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 
-        "html:target/cucumber.html",
-       
- 		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
- 		
-   		}
-
+}
 
 )
 
+public class FailedTestScenariosJunitTestRunner extends DriverManagerCapabilities {
 
-public class FailedTestScenariosJunitTestRunner extends DriverManagerCapabilities{
-	
-	static DriverManagerCapabilities drivermangercapa= new DriverManagerCapabilities()
-;
+	static DriverManagerCapabilities drivermangercapa = new DriverManagerCapabilities();
+
 	@BeforeClass
-	public static void setup() throws InterruptedException, IOException
-	{
-	   AppiumServiceManager.startserver();
-	   drivermangercapa.devicemanager();
-	   
-	
-     }
-	
-	
+	public static void setup() throws InterruptedException, IOException {
+		AppiumServiceManager.startserver();
+		drivermangercapa.devicemanager();
 
-
+	}
 
 	@AfterClass
-	public static void Endserver()
-	{
-		
-      AppiumServiceManager.stopserver();
+	public static void Endserver() {
+
+		AppiumServiceManager.stopserver();
 	}
 
-	
-	}
-
-
-
+}

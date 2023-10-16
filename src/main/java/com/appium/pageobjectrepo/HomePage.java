@@ -14,20 +14,20 @@ public class HomePage {
 	public AndroidDriver driver;
 	@AndroidFindBy(accessibility = "home-screen-fresh-lead-button")
 	private WebElement homescreenfreshleadbutton;
-	
+
 	@AndroidFindBy(accessibility = "home-screen-add-button")
 	private WebElement homescreenadditionbutton;
-	
+
 	public HomePage(AndroidDriver driver) {
-		this.driver=driver;
-		PageFactory.initElements(new AppiumFieldDecorator(driver),this);
+		this.driver = driver;
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}
 
-	 public WebElement Clickadditionbutton() {
-		 return homescreenadditionbutton;
-	 }
-	 
-	 public WebElement ClickFreshleadbuttonfromhomescreenpage() {
-		 return homescreenfreshleadbutton;
-	 }
+	public WebElement Clickadditionbutton() {
+		return homescreenadditionbutton;
+	}
+
+	public WebElement ClickFreshleadbuttonfromhomescreenpage() {
+		return homescreenfreshleadbutton;
+	}
 }

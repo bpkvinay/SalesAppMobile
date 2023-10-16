@@ -1,9 +1,9 @@
-Feature: Login Customer applications
+Feature: SalesApplication
 
   
  Background: Login Sales Applications
-  Scenario Outline: Verify the Homepage when user login to applications
  
+  Scenario Outline: Verify the Homepage when user login to applications
     Given when user click on LoginButton
     When user enter "<EmployeeID>" in EmployeeID TextField
     Then user click on sendotp button
