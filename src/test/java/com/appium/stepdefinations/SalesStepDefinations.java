@@ -20,25 +20,29 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class SalesStepDefinations extends DriverManagerCapabilities {
+public class SalesStepDefinations extends DriverManagerCapabilities  {
 
+	
 	LoginPage loginpage = new LoginPage(driver);
 	AppiumUtilsActions appiumactions = new AppiumUtilsActions();
 	NewLeadPage newleadpage = new NewLeadPage(driver);
 	String mobilenumber = appiumactions.getrandommobilenumber();
 
 	@Given("when user click on LoginButton")
-	public void when_user_click_on_login_button() {
+	public void when_user_click_on_login_button() throws InterruptedException {
+		Thread.sleep(3000);
 		loginpage.LoginButton().click();
 	}
 
 	@When("user enter {string} in EmployeeID TextField")
-	public void user_enter_in_employee_id_text_field(String string) {
+	public void user_enter_in_employee_id_text_field(String string) throws InterruptedException {
+		Thread.sleep(3000);
 		loginpage.EmployeedIDTextFeild().sendKeys(string);
 	}
 
 	@Then("user click on sendotp button")
-	public void user_click_on_sendotp_button() {
+	public void user_click_on_sendotp_button() throws InterruptedException {
+		Thread.sleep(3000);
 		loginpage.SendOTPButton().click();
 	}
 
@@ -49,9 +53,9 @@ public class SalesStepDefinations extends DriverManagerCapabilities {
 
 	@Then("user click on verify button")
 	public void user_click_on_verify_button() throws InterruptedException {
-		Thread.sleep(6000);
+		Thread.sleep(3000);
 		loginpage.VerifyButton().click();
-		Thread.sleep(8000);
+		Thread.sleep(3000);
 	}
 
 	@Then("user should lands to homepage")

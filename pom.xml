@@ -4,28 +4,12 @@
   <artifactId>MobileNeogrowth</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <dependencies>
-        
-        
-         
-         
-        
-    
-
+  
  <dependency>
-
 <groupId>io.cucumber</groupId>
-
 <artifactId>cucumber-java</artifactId>
-
 <version>7.11.1</version>
-
 </dependency>
-
-
-
-
-
-
 
 <dependency>
     <groupId>io.cucumber</groupId>
@@ -33,27 +17,17 @@
     <version>7.11.1</version>
     <scope>test</scope>
 </dependency>
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
+
  <dependency>
     <groupId>io.appium</groupId>
     <artifactId>java-client</artifactId>
-    <version>8.5.1</version>
+    <version>8.6.0</version>
 </dependency>
 
-
 <dependency>
-<groupId>org.seleniumhq.selenium</groupId>
-<artifactId>selenium-java</artifactId>
-<version>4.10.0</version> 
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-remote-driver</artifactId>
+        <version>4.8.3</version>
 </dependency>
 
 <dependency>
@@ -67,6 +41,7 @@
 <artifactId>extentreports</artifactId>
 <version>5.0.9</version>
 </dependency>
+
 <dependency>
     <groupId>tech.grasshopper</groupId>
     <artifactId>extentreports-cucumber7-adapter</artifactId>
@@ -78,19 +53,30 @@
     <artifactId>extentreports-cucumber6-adapter</artifactId>
     <version>2.1.0</version>
 </dependency>
+
 <dependency>
     <groupId>com.aventstack</groupId>
     <artifactId>extentreports</artifactId>
     <version>5.0.4</version>
 </dependency>
 
-
- 
-
-
          
 </dependencies>
 
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version> <!-- or the latest version -->
+            <configuration>
+                <source>1.8</source> <!-- Update this line to a higher Java version -->
+                <target>1.8</target> <!-- Update this line to a higher Java version -->
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 
 
   

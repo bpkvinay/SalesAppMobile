@@ -10,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.appium.appiumUtils.AppiumServiceManager;
 import com.appium.appiumUtils.AppiumUtilsActions;
@@ -38,7 +39,9 @@ public class AppiumJunitTestRunner extends DriverManagerCapabilities {
 	public static void setup() throws InterruptedException, IOException {
 		AppiumServiceManager.startserver();
 		drivermangercapa.devicemanager();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
+		
 	}
 
 	@AfterClass
